@@ -13,6 +13,7 @@ pipeline {
     stage('SCM') {
       agent any
       steps {
+        script {
         sh 'echo hello'
         sh 'echo $WORKSPACE'
         sh """
@@ -28,7 +29,7 @@ pipeline {
                url: CODE_REPO]]])
       }
     }
-
+}
 }
 post {
     success {
