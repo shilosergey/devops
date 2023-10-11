@@ -31,6 +31,7 @@ pipeline {
         nodejs="$WORKSPACE/node-v18.18.1-linux-x64/bin"
         sh """
         cd app/my-website2
+        $nodejs/npm install
         $nodejs/npm run build
         """
       }
