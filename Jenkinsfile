@@ -29,10 +29,13 @@ pipeline {
                url: CODE_REPO]]])
 
         nodejs="$WORKSPACE/node-v18.18.1-linux-x64/bin"
+        
         sh """
+        export PATH="$nodejs:$PATH"
+        node --version
         cd app/my-website2
-        $nodejs/npm install
-        $nodejs/npm run build
+        npm install
+        npm run build
         """
       }
     }
