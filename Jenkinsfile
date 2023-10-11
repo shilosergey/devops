@@ -17,8 +17,8 @@ pipeline {
         sh 'echo hello'
         sh 'echo $WORKSPACE'
         sh """
-        wget https://nodejs.org/dist/v18.18.1/node-v18.18.1-linux-x64.tar.gz
-        tar -xvf node-v18.18.1-linux-x64.tar.gz
+        wget https://nodejs.org/download/release/v17.9.1/node-v17.9.1-linux-x64.tar.gz
+        tar -xvf node-v17.9.1-linux-x64.tar.gz
         """
         CODE_REPO='git@github.com:RoboInterativo/robo-docs.git'
         checkout([$class: 'GitSCM', branches: [[name: BRANCH]],
@@ -28,8 +28,8 @@ pipeline {
                submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'ssh-git',
                url: CODE_REPO]]])
 
-        nodejs="$WORKSPACE/node-v18.18.1-linux-x64/bin"
-        
+        nodejs="$WORKSPACE/node-v17.9.1-linux-x64/bin"
+
         sh """
         export PATH="$nodejs:$PATH"
         node --version
